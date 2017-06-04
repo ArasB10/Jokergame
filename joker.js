@@ -8,7 +8,7 @@ var currentScene = 1;
 // Uzkrauname garsus, paveiksliukus, sukuriame canvas ir globalius kintamuosius
 
 function setup() {
-	createCanvas(400,400);
+	createCanvas(600,600);
 	snake = new Snake();
 	frameRate(10);
 	pickLocation();
