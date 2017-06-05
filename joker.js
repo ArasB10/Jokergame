@@ -4,6 +4,7 @@ var food;
 var laughSound;
 var batmanImage;
 var currentScene = 1;
+var soundImage;
 
 // Uzkrauname garsus, paveiksliukus, sukuriame canvas ir globalius kintamuosius
 
@@ -11,11 +12,12 @@ function setup() {
 	createCanvas(600,600);
 	snake = new Snake();
 	frameRate(10);
-	pickLocation();
+	enemy();
 	laughSound = loadSound("sound/laugh.mp3");
 	laughSound.playMode('restart');
 	laughSound.setVolume(0.1);
 	batmanImage = loadImage("images/batman.png");
+	soundImage = loadImage("images/yes.png");
 };
 
 function draw() {
@@ -50,12 +52,13 @@ function drawScene1(){
 
 function drawScene2(){
 	background(187);
+	image(soundImage, 550,10,scl, scl);
 	snake.death();
 	snake.update();
 	snake.show();
 
 	if(snake.eat(food)){
-		pickLocation();
+		enemy();
 		laughSound.jump(6,2);
 	}
 	
@@ -64,7 +67,7 @@ function drawScene2(){
 
 // Funkcija randa nauja vieta batman'o paveiksliukui atsirasti
 
-function pickLocation() {
+function enemy() {
 	var cols = floor(width/scl);
 	var rows = floor(height/scl);
 
@@ -90,6 +93,12 @@ function mouseClicked(){
 	if(currentScene===1){
 		if((mouseX>250 && mouseX<400)&&(mouseY>200 && mouseY<250)){
 			currentScene=2;
+		}
+	}
+	if(currentScene===2){
+		if((mouseX>550 && mouseX<550+scl)&&(mouseY>10 && mouseY<10+scl)){
+			soundImage = loadImage("images/no.png");
+			laughSound.setVolume(0);
 		}
 	}
 }
