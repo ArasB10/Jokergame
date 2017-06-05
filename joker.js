@@ -50,6 +50,7 @@ function drawScene1(){
 
 function drawScene2(){
 	background(187);
+	snake.death();
 	snake.update();
 	snake.show();
 
