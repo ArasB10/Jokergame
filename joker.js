@@ -98,7 +98,7 @@ function mouseClicked(){
 	if(currentScene===2){
 		if((mouseX>550 && mouseX<550+scl)&&(mouseY>10 && mouseY<10+scl)){
 			soundImage = loadImage("images/no.png");
-			laughSound.setVolume(0);
+			laughSound.setVolume(0.0);
 		}
 	}
 }
